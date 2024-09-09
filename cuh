@@ -127,16 +127,12 @@ end)
 			end
 		else
 			_G.Equip = false
-			while _G.Equip do
 				wait(finnal)
 				for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 					if v.Name == "Double Weight" then
 						v.Parent = game.Players.LocalPlayer.Backpack
-						wait(0.5)
-						v.Parent = game.Players.LocalPlayer.Backpack
 					end
 				end
-			end
 		end
 		
 	end)
