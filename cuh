@@ -82,23 +82,31 @@
 	
 	local Section = Tab:NewSection("Farm Modified")
 	Section:NewButton("Start Farming", "get strong", function()
-		getgenv().Lifter = true;
+		getgenv().Lifter = true
 
-		function onActivation()
-			while wait(finnal) do
-				if getgenv().Lifter == true then
-					for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-						if v.Name == "Double Weight" then 
-							v.Activated:Connect(onActivation)
-						end
-					end	
-				end
-			end
-		end
-		
-		
+function onActivation()
+    if getgenv().Lifter == true then
+        for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v:IsA("Tool") and v.Name == "Double Weight" then 
+                v:Activate()
+            end
+        end	
+    end
+end
 
-					
+for _, tool in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if tool:IsA("Tool") and tool.Name == "Double Weight" then 
+        tool.Activated:Connect(onActivation)
+    end
+end
+
+spawn(function()
+    while getgenv().Lifter do
+        onActivation()
+        wait(finnal)
+    end
+end)
+
 	end)
 	local Section = Tab:NewSection("Stop farm")
 	Section:NewButton("Stop Farming", "get strong", function()
