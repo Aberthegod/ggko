@@ -87,7 +87,8 @@
 function onActivation()
     if getgenv().Lifter == true then
         for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-            if v:IsA("Tool") and v.Name == "Double Weight" then 
+            if v:IsA("Tool") and v.Name == "Double Weight" then
+				wait(finnal) 
                 v:Activate()
             end
         end	
