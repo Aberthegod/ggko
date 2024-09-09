@@ -95,7 +95,8 @@ function onActivation()
 end
 
 for _, tool in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-    if tool:IsA("Tool") and tool.Name == "Double Weight" then 
+    if tool:IsA("Tool") and tool.Name == "Double Weight" then
+		wait(finnal) 
         tool.Activated:Connect(onActivation)
     end
 end
