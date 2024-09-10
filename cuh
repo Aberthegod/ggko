@@ -275,7 +275,7 @@ end)
 
 	local num1 = 0 
 
-	Section:NewSlider("Drag To Dupe", "Dupe What Ever You Drag To", 1000, 1, function(s) -- 500 (MaxValue) | 0 (MinValue)
+	Section:NewSlider("Drag To Any Amount", "Dupe What Ever You Drag To", 1000, 1, function(s) -- 500 (MaxValue) | 0 (MinValue)
 		num1 = tonumber(s)
 	end)
 
