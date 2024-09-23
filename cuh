@@ -304,57 +304,65 @@ local function checkGamepassOwnership()
 			
 				local Section = Tab:NewSection("Farm Modified")
 				Section:NewButton("Start Farming", "get strong", function()
-				    local pinglimit = 200  -- Define ping limit
-    local Timee = 3600  -- Initial farming time (in seconds)
-    getgenv().farmer = true  -- Global flag for farming
-
-    -- Start the main loop
-    while getgenv().farmer do
-        local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
-
-        -- Only farm if the ping is below the limit
-        if ping <= pinglimit then
-            -- Activate Double Weights in character
-            for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                if v.Name == "Double Weight" then
-                    v:Activate()  -- Activate Double Weight tool
-                end
-            end
-
-            -- Decrement Timee each second
-            Timee -= 1
-            wait(1)
-
-            -- Stop farming when the timer reaches zero
-            if Timee <= 0 then
-                getgenv().farmer = false
-                game:GetService("StarterGui"):SetCore("SendNotification", {
-                    Title = "Farm Stopped",
-                    Text = "Ping Getting Too High!", 
-                    Duration = 3
-                })
-            end
-        else
-            print("Ping too high, waiting for better connection...")
-            wait(0.5)  -- Wait and retry ping check
-        end
-    end
-
-    -- If the farmer is set to false, restart it when ping improves
-    while true do
-        local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
-        if ping <= pinglimit then
-            getgenv().farmer = true  -- Restart farming
-            Timee = 3600  -- Reset timer
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Farm resuming",
-                Text = "Ping Normal!", 
-                Duration = 3
-            })
-            break
-        end
-        wait(1)  -- Check every second if the ping improves
-    end
+					local pinglimit = 200  -- Define ping limit
+					local Timee = 3600  -- Initial farming time (in seconds)
+					getgenv().farmer = true  -- Global flag for farming
+					local waitTime = 0.631201  -- Adjust wait time for activation
+					
+					-- Main farming loop
+					while getgenv().farmer do
+						local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
+					
+						-- Only farm if the ping is below the limit
+						if ping <= pinglimit then
+							-- Activate Double Weights in character
+							while wait(waitTime) do
+								if getgenv().farmer == true then
+							for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+								if v.Name == "Double Weight" then
+									v:Activate()  -- Activate Double Weight tool
+								end
+							end
+						end
+					end
+					
+							-- Decrement Timee each second
+							repeat
+								Timee -= 1
+								wait(1)
+							until Timee == 0 or game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue() > pinglimit
+					
+							-- If time runs out, stop farming
+							if Timee <= 0 then
+								getgenv().farmer = false
+								game:GetService("StarterGui"):SetCore("SendNotification", {
+									Title = "Farm Stopped",
+									Text = "Timer expired or ping too high!",
+									Duration = 3
+								})
+							end
+						else
+							print("Ping too high, waiting for better connection...")
+							wait(0.5)  -- Retry ping check after a short wait
+						end
+					end
+					
+					-- Check for improved ping and restart farming
+					while not getgenv().farmer do
+						local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
+						if ping <= pinglimit then
+							getgenv().farmer = true  -- Restart farming
+							Timee = 3600  -- Reset timer
+							game:GetService("StarterGui"):SetCore("SendNotification", {
+								Title = "Farm Resuming",
+								Text = "Ping back to normal!",
+								Duration = 3
+							})
+							break
+						end
+						wait(1)  -- Check every second if the ping improves
+					end
+					
 				
 			end)
 			
