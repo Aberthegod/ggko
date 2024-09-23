@@ -645,52 +645,42 @@ local function checkGamepassOwnership()
 				local Section = Tab:NewSection("More Things")
 
 				Section:NewButton("Click Loop","loops people", function()
-						
-			local Players = game:GetService("Players")
-			local ReplicatedStorage = game:GetService("ReplicatedStorage")
-			local RunService = game:GetService("RunService")
-			local player = Players.LocalPlayer
-			local mouse = player:GetMouse()
-			
-			local punchRemote = ReplicatedStorage.Remotes.Human_Punch
-			
-			local function startPunching(targetPlayer)
-				local character = player.Character or player.CharacterAdded:Wait()
-				local backpack = player.Backpack
-				local boxingTool = backpack:FindFirstChild("Boxing")
-				
-				if not boxingTool then
-					boxingTool = character:FindFirstChild("Boxing")
-				end
-				
-				if boxingTool and boxingTool:FindFirstChild("Handle") then
-					local creatorValue = character.Humanoid:FindFirstChild("creator")
-					local creatorPlayer = creatorValue and creatorValue.Value and tostring(creatorValue.Value)
-					local targetUpperTorso = targetPlayer.Character:FindFirstChild("UpperTorso")
-			
-					if creatorPlayer and targetUpperTorso then
-						coroutine.wrap(function()
-							RunService.RenderStepped:Connect(function()
-								punchRemote:FireServer(character.RightHand, "RightPunch", targetUpperTorso, 5, true, "RightPunch", boxingTool.Handle.Hit, 5)
-								punchRemote:FireServer(character.LeftHand, "LeftPunch", targetUpperTorso, 5, true, "LeftPunch", boxingTool.Handle.Hit, 5)
-							end)
-						end)()
-					end
-				end
-			end
-			
-			mouse.Button1Down:Connect(function()
-				local target = mouse.Target
-			
-				if target and target.Parent then
-					local targetPlayer = Players:GetPlayerFromCharacter(target.Parent)
-			
-					if targetPlayer and targetPlayer ~= player then
-						startPunching(targetPlayer)
-					end
-				end
-			end)
-			
+					local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+mouse.Button1Down:Connect(function()
+    -- Ensure the player has a "creator" value in Humanoid and that they are punching.
+    local humanoid = player.Character:FindFirstChild("Humanoid")
+    if humanoid and humanoid:FindFirstChild("creator") then
+        local targetPlayerName = tostring(humanoid.creator.Value)
+        local target = workspace:FindFirstChild(targetPlayerName)
+
+        if target and target:FindFirstChild("UpperTorso") then
+            -- Fire punch event for both Right and Left Hand punches
+            game.ReplicatedStorage.Remotes.Human_Punch:FireServer(
+                player.Character.RightHand, 
+                "RightPunch", 
+                target.UpperTorso, 
+                5, 
+                true, 
+                "RightPunch", 
+                player.Backpack.Boxing.Handle.Hit, 
+                5
+            )
+            game.ReplicatedStorage.Remotes.Human_Punch:FireServer(
+                player.Character.LeftHand, 
+                "LeftPunch", 
+                target.UpperTorso, 
+                5, 
+                true, 
+                "LeftPunch", 
+                player.Backpack.Boxing.Handle.Hit, 
+                5
+            )
+        end
+    end
+end)
+
 				end)
 				
 				Section:NewButton("Admin", "Reviz Admin", function()
