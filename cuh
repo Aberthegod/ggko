@@ -5058,235 +5058,233 @@ local function checkGamepassOwnership()
 				
 				end)
 
-				local Tab = Window:NewTab("info Tab")
+				local Tab = Window:NewTab("Info Tab")
 
 				local Section = Tab:NewSection("Click")
 
 				Section:NewButton("Click Me!", "Infffo", function()
-							-- Gui to Lua
-					-- Version: 3.2
-			
-					-- Instances:
-			
-					local ScreenGui = Instance.new("ScreenGui")
-					local UIListLayout = Instance.new("UIListLayout")
-					local WC = Instance.new("TextLabel")
-					local UICorner = Instance.new("UICorner")
-					local SE = Instance.new("TextLabel")
-					local UICorner_2 = Instance.new("UICorner")
-					local TIME = Instance.new("TextLabel")
-					local UICorner_3 = Instance.new("UICorner")
-					local STR = Instance.new("TextLabel")
-					local UICorner_4 = Instance.new("UICorner")
-					local SPS = Instance.new("TextLabel")
-					local UICorner_5 = Instance.new("UICorner")
-			
-					--Properties:
-			
-					ScreenGui.Parent = game.CoreGui
-					ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-			
-					UIListLayout.Parent = ScreenGui
-					UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-					UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-					UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
-					UIListLayout.Padding = UDim.new(0, 2)
-			
-					WC.Name = "WC"
-					WC.Parent = ScreenGui
-					WC.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
-					WC.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					WC.BorderSizePixel = 0
-					WC.LayoutOrder = 1
-					WC.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
-					WC.Size = UDim2.new(0, 200, 0, 50)
-					WC.Font = Enum.Font.FredokaOne
-					WC.Text = "Weights.."
-					WC.TextColor3 = Color3.fromRGB(255, 255, 255)
-					WC.TextScaled = true
-					WC.TextSize = 14.000
-					WC.TextStrokeTransparency = 0.000
-					WC.TextWrapped = true
-			
-					UICorner.Parent = WC
-			
-					SE.Name = "SE"
-					SE.Parent = ScreenGui
-					SE.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
-					SE.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					SE.BorderSizePixel = 0
-					SE.LayoutOrder = 4
-					SE.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
-					SE.Size = UDim2.new(0, 200, 0, 50)
-					SE.Font = Enum.Font.FredokaOne
-					SE.Text = "Earned.."
-					SE.TextColor3 = Color3.fromRGB(255, 255, 255)
-					SE.TextScaled = true
-					SE.TextSize = 14.000
-					SE.TextStrokeTransparency = 0.000
-					SE.TextWrapped = true
-			
-					UICorner_2.Parent = SE
-			
-					TIME.Name = "TIME"
-					TIME.Parent = ScreenGui
-					TIME.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
-					TIME.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					TIME.BorderSizePixel = 0
-					TIME.LayoutOrder = 5
-					TIME.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
-					TIME.Size = UDim2.new(0, 200, 0, 50)
-					TIME.Font = Enum.Font.FredokaOne
-					TIME.Text = "Time..."
-					TIME.TextColor3 = Color3.fromRGB(255, 255, 255)
-					TIME.TextScaled = true
-					TIME.TextSize = 14.000
-					TIME.TextStrokeTransparency = 0.000
-					TIME.TextWrapped = true
-			
-					UICorner_3.Parent = TIME
-			
-					STR.Name = "STR"
-					STR.Parent = ScreenGui
-					STR.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
-					STR.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					STR.BorderSizePixel = 0
-					STR.LayoutOrder = 2
-					STR.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
-					STR.Size = UDim2.new(0, 200, 0, 50)
-					STR.Font = Enum.Font.FredokaOne
-					STR.Text = "Str.."
-					STR.TextColor3 = Color3.fromRGB(255, 255, 255)
-					STR.TextScaled = true
-					STR.TextSize = 14.000
-					STR.TextStrokeTransparency = 0.000
-					STR.TextWrapped = true
-			
-					UICorner_4.Parent = STR
-			
-					SPS.Name = "SPS"
-					SPS.Parent = ScreenGui
-					SPS.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
-					SPS.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					SPS.BorderSizePixel = 0
-					SPS.LayoutOrder = 3
-					SPS.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
-					SPS.Size = UDim2.new(0, 200, 0, 50)
-					SPS.Font = Enum.Font.FredokaOne
-					SPS.Text = "SPS.."
-					SPS.TextColor3 = Color3.fromRGB(255, 255, 255)
-					SPS.TextScaled = true
-					SPS.TextSize = 14.000
-					SPS.TextStrokeTransparency = 0.000
-					SPS.TextWrapped = true
-			
-					UICorner_5.Parent = SPS
-			
-					-- Scripts:
-			
-					local function DLHXQGO_fake_script() -- WC.LocalScript 
-						local script = Instance.new('LocalScript', WC)
-			
-						repeat
-							wait(.1)
-							local num = 0
-							for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-								if v.Name == "Double Weight" then
-									num += 1
-								end
-							end
-			
-							if num == 0 then
-								for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-									if v.Name == "Double Weight" then
-										num += 1
-									end
-								end
-							end
-							WC.Text = "Weights: ".. num
-						until num == 9999999999999
-					end
-					coroutine.wrap(DLHXQGO_fake_script)()
-					local function MMLV_fake_script() -- SE.LocalScript 
-						local script = Instance.new('LocalScript', SE)
-			
-						local str = game:GetService("Players").LocalPlayer.leaderstats.Strength;
-						local curvalue = str.Value;
-						local earned = 0;
-						local formattedEarned = str
-						local SuffixList = { "", "K", "M", "B", "T" }
-						local function Format(value, idp)
-							local exp = math.floor(math.log(math.max(1, math.abs(value)), 1000))
-							local suffix = SuffixList[1 + exp] or ("e+" .. exp)
-							local norm = math.floor(value * ((10 ^ idp) / (1000 ^ exp))) / (10 ^ idp)
-			
-							return ("%." .. idp .. "f%s"):format(norm, suffix)
-						end 
-						str:GetPropertyChangedSignal("Value"):Connect(function()
-							local delta = (str.Value - curvalue);
-							earned += delta;
-							SE.Text = "Earned: "..Format(earned,1);
-							curvalue = str.Value;
-						end)
-					end
-					coroutine.wrap(MMLV_fake_script)()
-					local function QIVW_fake_script() -- TIME.LocalScript 
-						local script = Instance.new('LocalScript', TIME)
-			
-						local startTime = os.time()
-			
-						local function formatTime(seconds)
-							local days = math.floor(seconds / 86400)
-							seconds = seconds % 86400
-							local hours = math.floor(seconds / 3600)
-							seconds = seconds % 3600
-							local minutes = math.floor(seconds / 60)
-							seconds = seconds % 60
-							return string.format("%dd %02dh %02dm %02d", days, hours, minutes, seconds)
-						end
-			
-						while true do
-							if getgenv().Lifter == true or getgenv().farmer == true then
-							local elapsedTime = os.time() - startTime
-							TIME.Text = "Time Farming: " .. formatTime(elapsedTime)
-							wait(1)
-							end
-						end
-					end
-					coroutine.wrap(QIVW_fake_script)()
-					local function XTRMAW_fake_script() -- STR.LocalScript 
-						local script = Instance.new('LocalScript', STR)
-			
-						local l = true
-			
-						while(l==true) do 
-							local player = game:GetService("Players").LocalPlayer
-							local playerName = player.Name
-							wait(0.5)
-			
-							local strength = game.ReplicatedStorage.Data[playerName].Strength.Value
-							local formattedStrength = strength
-			
-							if formattedStrength >= 1e12 then
-								formattedStrength = string.format("%.2fT", formattedStrength / 1e12)
-							elseif formattedStrength >= 1e9 then
-								formattedStrength = string.format("%.2fB", formattedStrength / 1e9)
-							elseif formattedStrength >= 1e6 then
-								formattedStrength = string.format("%.2fM", formattedStrength / 1e6)
-							elseif formattedStrength >= 1e3 then
-								formattedStrength = string.format("%.2fK", formattedStrength / 1e3)
-							end
-			
-							STR.Text = "Total Strength: ".. formattedStrength
-						end
-					end
-					coroutine.wrap(XTRMAW_fake_script)()
-					local function NZXWIDJ_fake_script() -- SPS.LocalScript 
-						local script = Instance.new('LocalScript', SPS)
-			
-						local w=game:GetService("Players").LocalPlayer.leaderstats.Strength;local x=w.Value;local y=0;local z=0;while true do x=w.Value;wait(1)y=w.Value;z=y-x;SPS.Text="SPS: "..z end
-					end
-					coroutine.wrap(NZXWIDJ_fake_script)()
+					-- Gui to Lua
+                -- Version: 3.2
+
+                -- Instances:
+
+                local ScreenGui = Instance.new("ScreenGui")
+                local UIListLayout = Instance.new("UIListLayout")
+                local WC = Instance.new("TextLabel")
+                local UICorner = Instance.new("UICorner")
+                local SE = Instance.new("TextLabel")
+                local UICorner_2 = Instance.new("UICorner")
+                local TIME = Instance.new("TextLabel")
+                local UICorner_3 = Instance.new("UICorner")
+                local STR = Instance.new("TextLabel")
+                local UICorner_4 = Instance.new("UICorner")
+                local SPS = Instance.new("TextLabel")
+                local UICorner_5 = Instance.new("UICorner")
+
+                --Properties:
+
+                ScreenGui.Parent = game.CoreGui
+                ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+                UIListLayout.Parent = ScreenGui
+                UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+                UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+                UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+                UIListLayout.Padding = UDim.new(0, 2)
+
+                WC.Name = "WC"
+                WC.Parent = ScreenGui
+                WC.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+                WC.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                WC.BorderSizePixel = 0
+                WC.LayoutOrder = 1
+                WC.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
+                WC.Size = UDim2.new(0, 200, 0, 50)
+                WC.Font = Enum.Font.FredokaOne
+                WC.Text = "Weights.."
+                WC.TextColor3 = Color3.fromRGB(255, 255, 255)
+                WC.TextScaled = true
+                WC.TextSize = 14.000
+                WC.TextStrokeTransparency = 0.000
+                WC.TextWrapped = true
+
+                UICorner.Parent = WC
+
+                SE.Name = "SE"
+                SE.Parent = ScreenGui
+                SE.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+                SE.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                SE.BorderSizePixel = 0
+                SE.LayoutOrder = 4
+                SE.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
+                SE.Size = UDim2.new(0, 200, 0, 50)
+                SE.Font = Enum.Font.FredokaOne
+                SE.Text = "Earned.."
+                SE.TextColor3 = Color3.fromRGB(255, 255, 255)
+                SE.TextScaled = true
+                SE.TextSize = 14.000
+                SE.TextStrokeTransparency = 0.000
+                SE.TextWrapped = true
+
+                UICorner_2.Parent = SE
+
+                TIME.Name = "TIME"
+                TIME.Parent = ScreenGui
+                TIME.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+                TIME.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                TIME.BorderSizePixel = 0
+                TIME.LayoutOrder = 5
+                TIME.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
+                TIME.Size = UDim2.new(0, 200, 0, 50)
+                TIME.Font = Enum.Font.FredokaOne
+                TIME.Text = "Time..."
+                TIME.TextColor3 = Color3.fromRGB(255, 255, 255)
+                TIME.TextScaled = true
+                TIME.TextSize = 14.000
+                TIME.TextStrokeTransparency = 0.000
+                TIME.TextWrapped = true
+
+                UICorner_3.Parent = TIME
+
+                STR.Name = "STR"
+                STR.Parent = ScreenGui
+                STR.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+                STR.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                STR.BorderSizePixel = 0
+                STR.LayoutOrder = 2
+                STR.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
+                STR.Size = UDim2.new(0, 200, 0, 50)
+                STR.Font = Enum.Font.FredokaOne
+                STR.Text = "Str.."
+                STR.TextColor3 = Color3.fromRGB(255, 255, 255)
+                STR.TextScaled = true
+                STR.TextSize = 14.000
+                STR.TextStrokeTransparency = 0.000
+                STR.TextWrapped = true
+
+                UICorner_4.Parent = STR
+
+                SPS.Name = "SPS"
+                SPS.Parent = ScreenGui
+                SPS.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+                SPS.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                SPS.BorderSizePixel = 0
+                SPS.LayoutOrder = 3
+                SPS.Position = UDim2.new(0.840127885, 0, 0.924012184, 0)
+                SPS.Size = UDim2.new(0, 200, 0, 50)
+                SPS.Font = Enum.Font.FredokaOne
+                SPS.Text = "SPS.."
+                SPS.TextColor3 = Color3.fromRGB(255, 255, 255)
+                SPS.TextScaled = true
+                SPS.TextSize = 14.000
+                SPS.TextStrokeTransparency = 0.000
+                SPS.TextWrapped = true
+
+                UICorner_5.Parent = SPS
+
+                -- Scripts:
+
+                local function DLHXQGO_fake_script() -- WC.LocalScript 
+                    local script = Instance.new('LocalScript', WC)
+
+                    repeat
+                        wait(.1)
+                        local num = 0
+                        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if v.Name == "Double Weight" then
+                                num += 1
+                            end
+                        end
+
+                        if num == 0 then
+                            for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                                if v.Name == "Double Weight" then
+                                    num += 1
+                                end
+                            end
+                        end
+                        WC.Text = "Weights: ".. num
+                    until num == 9999999999999
+                end
+                coroutine.wrap(DLHXQGO_fake_script)()
+                local function MMLV_fake_script() -- SE.LocalScript 
+                    local script = Instance.new('LocalScript', SE)
+
+                    local str = game:GetService("Players").LocalPlayer.leaderstats.Strength;
+                    local curvalue = str.Value;
+                    local earned = 0;
+                    local formattedEarned = str
+                    local SuffixList = { "", "K", "M", "B", "T" }
+                    local function Format(value, idp)
+                        local exp = math.floor(math.log(math.max(1, math.abs(value)), 1000))
+                        local suffix = SuffixList[1 + exp] or ("e+" .. exp)
+                        local norm = math.floor(value * ((10 ^ idp) / (1000 ^ exp))) / (10 ^ idp)
+
+                        return ("%." .. idp .. "f%s"):format(norm, suffix)
+                    end 
+                    str:GetPropertyChangedSignal("Value"):Connect(function()
+                        local delta = (str.Value - curvalue);
+                        earned += delta;
+                        SE.Text = "Earned: "..Format(earned,2);
+                        curvalue = str.Value;
+                    end)
+                end
+                coroutine.wrap(MMLV_fake_script)()
+                local function QIVW_fake_script() -- TIME.LocalScript 
+                    local script = Instance.new('LocalScript', TIME)
+
+                    local startTime = os.time()
+
+                    local function formatTime(seconds)
+                        local days = math.floor(seconds / 86400)
+                        seconds = seconds % 86400
+                        local hours = math.floor(seconds / 3600)
+                        seconds = seconds % 3600
+                        local minutes = math.floor(seconds / 60)
+                        seconds = seconds % 60
+                        return string.format("%dd %02dh %02dm %02d", days, hours, minutes, seconds)
+                    end
+
+                    while true do
+                        local elapsedTime = os.time() - startTime
+                        TIME.Text = "Time Farming: " .. formatTime(elapsedTime)
+                        wait(1)
+                    end
+                end
+                coroutine.wrap(QIVW_fake_script)()
+                local function XTRMAW_fake_script() -- STR.LocalScript 
+                    local script = Instance.new('LocalScript', STR)
+
+                    local l = true
+
+                    while(l==true) do 
+                        local player = game:GetService("Players").LocalPlayer
+                        local playerName = player.Name
+                        wait(0.5)
+
+                        local strength = game.ReplicatedStorage.Data[playerName].Strength.Value
+                        local formattedStrength = strength
+
+                        if formattedStrength >= 1e12 then
+                            formattedStrength = string.format("%.2fT", formattedStrength / 1e12)
+                        elseif formattedStrength >= 1e9 then
+                            formattedStrength = string.format("%.2fB", formattedStrength / 1e9)
+                        elseif formattedStrength >= 1e6 then
+                            formattedStrength = string.format("%.2fM", formattedStrength / 1e6)
+                        elseif formattedStrength >= 1e3 then
+                            formattedStrength = string.format("%.2fK", formattedStrength / 1e3)
+                        end
+
+                        STR.Text = "Total Strength: ".. formattedStrength
+                    end
+                end
+                coroutine.wrap(XTRMAW_fake_script)()
+                local function NZXWIDJ_fake_script() -- SPS.LocalScript 
+                    local script = Instance.new('LocalScript', SPS)
+
+                    local w=game:GetService("Players").LocalPlayer.leaderstats.Strength;local x=w.Value;local y=0;local z=0;while true do x=w.Value;wait(1)y=w.Value;z=y-x;SPS.Text="SPS: "..z end
+                end
+                coroutine.wrap(NZXWIDJ_fake_script)()
 				end)
 
 				local Tab = Window:NewTab("Player Tab")
